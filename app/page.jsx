@@ -1,19 +1,23 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Navigation from "./navigation";
 
 const githubUrl = "https://github.com/Yash-Parmar-2707";
+const resumeAvailable = existsSync(join(process.cwd(), "public", "resume.pdf"));
 
 const projects = [
   {
     number: "01",
     name: "Medicine Inventory System",
-    description: "A medicine inventory management project.",
+    description:
+      "An online medicine ordering website where customers can order through the site or email, use discounts, and have orders managed through an admin panel.",
     category: "MEDICINE INVENTORY",
   },
   {
     number: "02",
     name: "HRixio",
     description:
-      "An HRMS platform for attendance, leave, approvals, and payroll readiness.",
+      "An HRMS for employee attendance, leave, pay, assets, and holidays, with payroll tools for HR and configurable multi-organization administration.",
     href: "https://hrixio.com/",
     category: "HUMAN RESOURCES",
   },
@@ -114,6 +118,26 @@ export default function HomePage() {
                   BCA &amp; MCA <span className="detail-separator">/</span> Silver Oak University
                 </p>
               </div>
+              <aside className="resume-card" aria-label="Résumé">
+                <div className="resume-card-copy">
+                  <p className="mono-label">RÉSUMÉ</p>
+                  <h3>Want the full overview?</h3>
+                  <p>
+                    {resumeAvailable
+                      ? "Download my résumé for a summary of my experience and skills."
+                      : "Add your PDF as public/resume.pdf to make it available here."}
+                  </p>
+                </div>
+                {resumeAvailable ? (
+                  <a className="resume-download" href="/resume.pdf" download>
+                    Download PDF <span aria-hidden="true">↓</span>
+                  </a>
+                ) : (
+                  <span className="resume-download is-unavailable" aria-disabled="true">
+                    PDF coming soon
+                  </span>
+                )}
+              </aside>
             </div>
           </div>
         </section>
@@ -142,9 +166,7 @@ export default function HomePage() {
                       >
                         ↗
                       </a>
-                    ) : (
-                      <span className="project-arrow" aria-hidden="true">↗</span>
-                    )}
+                    ) : null}
                   </div>
                   <div className="project-body">
                     <h3>{project.name}</h3>
@@ -156,7 +178,7 @@ export default function HomePage() {
                         VISIT HRIXIO <span aria-hidden="true">↗</span>
                       </a>
                     ) : (
-                      <span className="tech-tag">PROJECT</span>
+                      <span className="tech-tag">INTERNSHIP PROJECT</span>
                     )}
                     <span className="project-number">{project.number} / 02</span>
                   </div>
@@ -199,12 +221,39 @@ export default function HomePage() {
               Experience<span className="title-period">.</span>
             </h2>
             <div className="experience-detail">
-              <p className="mono-label">INTERNSHIP</p>
+              <p className="mono-label">SOFTWARE DEVELOPMENT INTERN</p>
               <h3>iBharat.tech</h3>
+              <p className="experience-summary">
+                Worked on two web products: an online medicine ordering platform and an
+                HRMS for employees, organization administrators, and super administrators.
+              </p>
+              <div className="experience-projects">
+                <article className="experience-project">
+                  <span className="experience-project-number">01</span>
+                  <div>
+                    <h4>Medicine Inventory System</h4>
+                    <p>
+                      Built a website where customers can place medicine orders online or
+                      by email, use discounts, and access an admin panel for inventory and
+                      order management.
+                    </p>
+                  </div>
+                </article>
+                <article className="experience-project">
+                  <span className="experience-project-number">02</span>
+                  <div>
+                    <h4>HRixio</h4>
+                    <p>
+                      Contributed to an HRMS where employees manage attendance, leave,
+                      pay, assets, and holidays. HR teams assign leave and create payroll.
+                      Super administrators manage multiple organizations, while each
+                      organization administrator configures the modules their organization
+                      needs.
+                    </p>
+                  </div>
+                </article>
+              </div>
             </div>
-            <span className="experience-mark" aria-hidden="true">
-              ↗
-            </span>
           </div>
         </section>
 
