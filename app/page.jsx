@@ -6,7 +6,8 @@ const projects = [
   {
     number: "01",
     name: "Medicine Inventory System",
-    description: "A project focused on medicine inventory management.",
+    description: "A medicine inventory management project.",
+    category: "MEDICINE INVENTORY",
   },
   {
     number: "02",
@@ -14,6 +15,7 @@ const projects = [
     description:
       "An HRMS platform for attendance, leave, approvals, and payroll readiness.",
     href: "https://hrixio.com/",
+    category: "HUMAN RESOURCES",
   },
 ];
 
@@ -39,13 +41,14 @@ export default function HomePage() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <Navigation />
+      <div className="portfolio-frame">
+        <Navigation />
 
-      <main id="main">
+        <main id="main">
         <section className="hero section-shell" id="home" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="eyebrow">
-              <span className="eyebrow-line" /> DEVELOPER PORTFOLIO
+              <span className="eyebrow-line" /> DEVELOPER PORTFOLIO <span className="eyebrow-divider">//</span> MOBILE &amp; WEB
               <span className="eyebrow-year">2026</span>
             </p>
             <h1 id="hero-title">
@@ -128,7 +131,7 @@ export default function HomePage() {
               {projects.map((project) => (
                 <article className="project-card" key={project.number}>
                   <div className="project-topline">
-                    <span className="mono-label">PROJECT {project.number}</span>
+                    <span className="mono-label">{project.category}</span>
                     {project.href ? (
                       <a
                         className="project-arrow"
@@ -165,20 +168,21 @@ export default function HomePage() {
 
         <section className="content-section section-shell" id="skills" aria-labelledby="skills-title">
           <SectionIndex number="03">CAPABILITIES</SectionIndex>
-          <div className="section-content skills-layout">
-            <div>
+          <div className="section-content">
+            <div className="section-heading-row">
               <h2 id="skills-title">
                 Skills<span className="title-period">.</span>
               </h2>
               <p className="section-note">Tools and approaches I work with.</p>
             </div>
-            <div className="skill-list">
+            <div className="capability-grid">
               {skills.map(([number, category, skill]) => (
-                <div className="skill-row" key={number}>
-                  <span className="skill-count">{number}</span>
+                <article className="capability-card" key={number}>
+                  <span className="skill-count">{number} <span aria-hidden="true">/</span> CAPABILITY</span>
                   <h3>{category}</h3>
                   <span className="skill-value">{skill}</span>
-                </div>
+                  <span className="capability-corner" aria-hidden="true">↗</span>
+                </article>
               ))}
             </div>
           </div>
@@ -217,17 +221,18 @@ export default function HomePage() {
             </a>
           </div>
         </section>
-      </main>
+        </main>
 
-      <footer className="site-footer section-shell">
-        <a className="wordmark" href="#home" aria-label="Back to top">
-          YP<span>.</span>
-        </a>
-        <p>© 2026 Yash Parmar</p>
-        <a className="footer-link" href={githubUrl} target="_blank" rel="noreferrer">
-          GitHub <span aria-hidden="true">↗</span>
-        </a>
-      </footer>
+        <footer className="site-footer section-shell">
+          <a className="wordmark" href="#home" aria-label="Back to top">
+            YP<span>.</span>
+          </a>
+          <p>© 2026 Yash Parmar</p>
+          <a className="footer-link" href={githubUrl} target="_blank" rel="noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </footer>
+      </div>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import "./globals.css";
+import CursorEffect from "./cursor-effect";
 
 export const metadata = {
   title: "Yash Parmar — Developer",
@@ -9,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <CursorEffect />
+      </body>
     </html>
   );
 }

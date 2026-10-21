@@ -7,6 +7,7 @@ const links = [
   ["About", "#about"],
   ["Projects", "#projects"],
   ["Skills", "#skills"],
+  ["Experience", "#experience"],
   ["Contact", "#contact"],
 ];
 
@@ -16,8 +17,12 @@ export default function Navigation() {
   return (
     <header className="site-header">
       <div className="nav-wrap">
-        <a className="wordmark" href="#home" aria-label="Yash Parmar, home">
-          YP<span>.</span>
+        <a className="brand-lockup" href="#home" aria-label="Yash Parmar, home">
+          <span className="brand-mark">YP<span>.</span></span>
+          <span className="brand-text">
+            <strong>Yash Parmar</strong>
+            <small>DEVELOPER</small>
+          </span>
         </a>
         <button
           className="menu-toggle"
